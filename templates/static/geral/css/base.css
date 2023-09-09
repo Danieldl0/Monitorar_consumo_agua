@@ -1,0 +1,13 @@
+body{
+    color: white !important;
+}
+
+:root{
+    /* --dark-color: #000; */
+    --main-color: #201F1F;
+    --dark-color: #1C1A1A;
+    --blue-color: #266bbb;
+    --contrast-color: #BE375F;
+    --differential-color: #ED8554;
+
+}

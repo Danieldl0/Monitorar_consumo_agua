@@ -1,0 +1,40 @@
+.bg-inscricao{
+    background-color: var(--dark-color);
+    padding-left: 1%;
+}
+
+
+.bg-img{
+    background-size: cover;
+    color: #14e9e9;
+    background-image: linear-gradient(to right, rgba(255,0,0,0), var(--blue-color));
+}
+
+.logo{
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.box-form{
+    width: 70%;
+    background-color: var(--main-color);
+    margin: auto;
+    padding: 40px;
+    margin-top: 4%;
+    border-radius: 20px;
+    box-shadow: 1px 1px 5px 1px #0e0e0e;
+}
+
+.link{
+    color: var(--blue-color);
+}
+
+.btn-principal{
+    background-color: transparent;
+    border: 1px solid var(--blue-color);
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: bold;
+}

@@ -1,0 +1,33 @@
+<div class="box-form">
+    <h3>CADASTRO</h3>
+    <hr style="border-color: #7E7B7C">
+
+    <form action="{% url 'cadastro_user' %}" method="POST">
+        {% csrf_token %}
+
+        {{form.username.label_tag}}
+        {{form.username}}
+        {{form.username.errors}}
+
+        {{form.first_name.label_tag}}
+        {{form.first_name}}
+        {{form.first_name.errors}}
+
+        {{form.last_name.label_tag}}
+        {{form.last_name}}
+        {{form.last_name.errors}}
+
+        {{form.email.label_tag}}
+        {{form.email}}
+        {{form.email.errors}}
+
+        {{form.password.label_tag}}
+        {{form.password}}
+        {{form.password.errors}}
+        <a href="{% url 'login_user' %}" class="link">Já possuo uma conta</a>
+        <br>
+        <br>
+        <input type="submit" value="CADASTRAR" class="btn-principal">
+        
+    </form>
+</div>
