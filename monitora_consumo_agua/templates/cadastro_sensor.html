@@ -54,7 +54,7 @@
                             </td>
                             <td>
                                 <a href="#"><span class="material-icons">edit</span></a>
-                                <a href="#"><span class="material-icons text-danger">delete</span></a>
+                                <a href="{% url 'deletar_sensor' object.id %}"><span class="material-icons text-danger">delete</span></a>
                             </td>
                         </tbody>
                     {% endfor %}

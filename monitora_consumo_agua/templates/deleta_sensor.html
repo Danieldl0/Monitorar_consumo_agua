@@ -1,0 +1,22 @@
+{% extends 'bases/base.html' %}
+
+{% block title %}
+ Remover Sensor
+{% endblock title %}
+
+{% block body %}
+
+    <div class="card card-primary ">
+        <div class="card-body">
+            <form method="post">{% csrf_token %}
+                <h4>Tem certeza que deseja excluir o Sensor "{{ sensor.nome }}"?</h4>
+                <br/>
+                <a href="{% url 'cadastro_sensor' %}" class="btn btn-secondary">Voltar</a>
+                <button type="submit" class="btn btn-danger">
+                Remover
+                </button>
+            </form>
+        </div>
+    </div>
+
+{% endblock body %}

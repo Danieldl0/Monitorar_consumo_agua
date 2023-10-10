@@ -1,7 +1,9 @@
+from typing import Any
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from django.shortcuts import get_object_or_404
 
 from .forms.consumo import ConsumoAguaForm
 from .forms.sensor import SensorForm
@@ -100,3 +102,26 @@ class CadastrarSensorView(TemplateView):
                             usuario=request.user
                         )
             ))
+
+
+
+class DeletarSensorView(TemplateView):
+    template_name='deleta_sensor.html'
+
+    def setup(self, request, *args, **kwargs):
+        super().setup(request, *args, **kwargs)
+
+        self.sensor = get_object_or_404(Sensor, pk=kwargs.get('id'))
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context.update(
+            sensor=self.sensor
+        )
+
+        return context
+
+    def post(self, request, *args, **kwargs):
+        self.sensor.delete()
+        return redirect('cadastro_sensor')
