@@ -1,11 +1,12 @@
 .bg-inscricao{
-    background-color: var(--dark-color);
+    background-color: rgb(239, 244, 248);
     padding-left: 1%;
 }
 
 
 .bg-img{
     background-size: cover;
+    height: 100vh;
     color: #14e9e9;
     background-image: linear-gradient(to right, rgba(255,0,0,0), var(--blue-color));
 }
@@ -14,9 +15,11 @@
     font-family: Arial, Helvetica, sans-serif;
     margin-top: 10px;
     text-align: center;
+    color: var(--dark-color);
 }
 
 .box-form{
+    color: white;
     width: 70%;
     background-color: var(--main-color);
     margin: auto;

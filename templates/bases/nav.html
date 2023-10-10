@@ -1,0 +1,47 @@
+{% load static %}
+<nav class="navbar bg-dark">
+  {% if user.is_authenticated %}
+    <div class="d-flex">
+    </div>
+    <div class="container-fluid">
+      
+      
+      <div class="d-flex">
+        
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link disabled text-light">Consumo de Água</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-dark" href="{% url 'cadastro_sensor' %}">Sensores</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-dark" href="">Consumo</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="text-light">
+
+          <div class="nav-item dropdown">
+            <a class="dropdown-toggle btn btn-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              {{user}}
+            </a>
+            <ul class="dropdown-menu" >
+              <li><a class="dropdown-item" href="{% url 'logout' %}">Sair</a></li>
+            </ul>
+          </div>
+    </div>
+
+      </div>
+      {% else %}
+      <h5 class="text-light">Consumo de Água</h5>
+        <div class="text-light">
+            <a class="btn btn-dark" href="{% url 'login_user' %}">Entrar</a>
+            <a class="btn btn-primary" href="{% url 'cadastro_user' %}">Cadastrar</a>
+        </div>
+      
+      {% endif %}
+
+    </div>
+  </nav>

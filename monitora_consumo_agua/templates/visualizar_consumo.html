@@ -1,0 +1,40 @@
+{% extends 'bases/base.html' %}
+{% load static %}
+
+{% block body %}
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+  google.charts.load("current", {packages:['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+      ["Periodo", "Consumo", { role: "style" } ],
+      {% for consumo in consumos %}
+        ['{{consumo.data_consumo|date:"d/m/Y"}}',  {{ consumo.consumo }} , '#266bbb'],
+      {% endfor %}
+    ]);
+
+    var view = new google.visualization.DataView(data);
+    view.setColumns([0, 1,
+                     { calc: "stringify",
+                       sourceColumn: 1,
+                       type: "string",
+                       role: "annotation" },
+                     2]);
+
+    var options = {
+      title: "Consumo de água no perido: {{periodo.0}} a {{periodo.1}}",
+      width: 600,
+      height: 400,
+      bar: {groupWidth: "85%"},
+      legend: { position: "right" },
+    };
+    var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+    chart.draw(view, options);
+}
+</script>
+<div id="columnchart_values" style="width: 900px; height: 300px;"></div>
+    
+
+{% endblock body %}

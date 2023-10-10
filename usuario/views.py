@@ -1,5 +1,6 @@
 from django.contrib import auth
 from django.shortcuts import redirect, render
+from django.urls import reverse
 from django.views.generic import TemplateView
 
 from usuario.forms import CadastroUserForm, LoginFormView
@@ -55,6 +56,12 @@ class LoginView(TemplateView):
             password = request.POST.get('password')
             user = auth.authenticate(username=username, password=password)
             auth.login(request, user)
-            return redirect('pagina_inicial')
+            return redirect('consumo_view')
 
         return render(template_name=self.template_name, context=self.get_context_data(), request=request)
+
+
+def logout(request):
+    # encerrando a seção do usuario logado
+    auth.logout(request)
+    return redirect(reverse('login_user'))

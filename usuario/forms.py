@@ -31,6 +31,17 @@ class CadastroUserForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ("username", "email", "password", 'first_name', 'last_name',)
+    
+
+    def save(self, commit=True):
+        instance = super().save(commit=False)
+        senha = self.cleaned_data.get("password")
+        if senha is not None:
+            instance.set_password(senha)
+        
+        if commit:
+            instance.save()
+        return instance
 
 
 class LoginFormView(forms.ModelForm):
