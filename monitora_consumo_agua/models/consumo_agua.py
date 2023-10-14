@@ -10,12 +10,6 @@ class ConsumoAgua(models.Model):
         related_name='consumos_sensores',
         null=True
     )
-    usuario = models.ForeignKey(
-        to='auth.User',
-        on_delete=models.PROTECT,
-        related_name='consumos_usuarios',
-        null=True
-    )
     consumo = models.DecimalField(
         max_digits=10,
         decimal_places=2,

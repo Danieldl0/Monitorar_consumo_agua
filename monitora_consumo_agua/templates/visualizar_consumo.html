@@ -3,15 +3,50 @@
 
 {% block body %}
 
+<div class="card card-primary m-1">
+  <div class="card-body">
+      <form method="GET">
+      
+        <table class="table table-borderless">
+          <thead class="">
+            <tr class="text-center">
+              <th colspan="3">Data</th>
+            </tr>
+            <tbody class="text-center">
+              <tr>
+                <td>
+                  <label for="nome">inicial</label>
+                  <input class="form-control" type="date" name="data1" placeholder="dd/mm/yyyy" value= "{{request.GET.data1}}">
+                </td>
+                <td>
+                  <label for="nome">final</label>
+                  <input class="form-control" type="date" name="data2" value= "{{request.GET.data2}}" >
+                </td>
+              </tr>
+              <tr>
+                <td colspan="6">
+                  <button type="submit" class="btn btn-outline-primary">Filtrar</button>
+                </td>
+              </tr>
+              
+            </tbody>
+          </thead>
+        </table>
+      </form>
+  </div>
+</div>
+    
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
   google.charts.load("current", {packages:['corechart']});
   google.charts.setOnLoadCallback(drawChart);
   function drawChart() {
     var data = google.visualization.arrayToDataTable([
-      ["Periodo", "Consumo", { role: "style" } ],
+      ["Periodo", "Consumo em Litros", { role: "style" } ],
       {% for consumo in consumos %}
-        ['{{consumo.data_consumo|date:"d/m/Y"}}',  {{ consumo.consumo }} , '#266bbb'],
+          ['{{consumo.data_consumo| date:"d/m/y"}}',  {{consumo.consumo__sum}} , '#266bbb'],
+      {% empty %}
+          ['', 0, ''],
       {% endfor %}
     ]);
 
@@ -24,17 +59,18 @@
                      2]);
 
     var options = {
-      title: "Consumo de água no perido: {{periodo.0}} a {{periodo.1}}",
-      width: 600,
-      height: 400,
-      bar: {groupWidth: "85%"},
+      title: "Consumo de água no período: {{periodo.0}} à {{periodo.1}}",
+      width: 'auto',
+      height: 'auto',
+      bar: {groupWidth: "60%"},
       legend: { position: "right" },
     };
-    var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+    var chart = new google.visualization.ColumnChart(document.getElementById("grafico"));
     chart.draw(view, options);
 }
+
+
 </script>
-<div id="columnchart_values" style="width: 900px; height: 300px;"></div>
-    
+<div id="grafico" class="d-flex justify-content-center"></div>
 
 {% endblock body %}
