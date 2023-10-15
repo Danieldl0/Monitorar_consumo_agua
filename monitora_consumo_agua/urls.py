@@ -5,7 +5,7 @@ from .views import *
 
 urlpatterns = [
     path('consumo/', ConsumoView.as_view(), name='consumo_view'),
-    path('cadastro/', CadastrarConsumoView.as_view(), name='cadastro_consumo'),
-    path('cadastro/sensor', CadastrarSensorView.as_view(), name='cadastro_sensor'),
+    path('cadastro/teste/', CadastrarConsumoView.as_view(), name='cadastro_consumo'),
+    path('cadastro/sensor/', CadastrarSensorView.as_view(), name='cadastro_sensor'),
     path('deletar/sensor/<int:id>/', DeletarSensorView.as_view(), name='deletar_sensor'),
 ]

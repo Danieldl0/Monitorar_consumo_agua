@@ -2,7 +2,6 @@
 {% load static %}
 
 {% block body %}
-
 <div class="card card-primary m-1">
   <div class="card-body">
       <form method="GET">
@@ -35,7 +34,6 @@
       </form>
   </div>
 </div>
-    
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
   google.charts.load("current", {packages:['corechart']});
@@ -44,7 +42,11 @@
     var data = google.visualization.arrayToDataTable([
       ["Periodo", "Consumo em Litros", { role: "style" } ],
       {% for consumo in consumos %}
+        {% if consumo.consumo__sum < 110 %}
           ['{{consumo.data_consumo| date:"d/m/y"}}',  {{consumo.consumo__sum}} , '#266bbb'],
+        {% else %}
+          ['{{consumo.data_consumo| date:"d/m/y"}}',  {{consumo.consumo__sum}} , '#ff0000'],
+        {% endif %}
       {% empty %}
           ['', 0, ''],
       {% endfor %}
@@ -72,5 +74,22 @@
 
 </script>
 <div id="grafico" class="d-flex justify-content-center"></div>
+<div class="card card-primary m-1">
+  <div class="card-body">
+      <form method="GET">
+      
+        <table class="table table-borderless">
+          <thead class="">
+            <tbody class="text-center">
+              <tr>
+               
+              </tr>
+              
+            </tbody>
+          </thead>
+        </table>
+      </form>
+  </div>
+</div>
 
 {% endblock body %}
