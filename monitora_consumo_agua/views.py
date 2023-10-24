@@ -25,6 +25,10 @@ class ConsumoView(TemplateView):
         self.ultimo_dia_mes_atual = (proximo_mes - timedelta(days=proximo_mes.day))
 
         if not request.user.is_anonymous:
+            self.sensores = Sensor.objects.filter(
+                usuario=request.user
+            )
+
             self.consumos_periodo = ConsumoAgua.objects.filter(
                 data_consumo__range=(self.mes_atual, self.ultimo_dia_mes_atual.strftime("%Y-%m-%d")),
                 sensor__usuario=request.user
@@ -55,6 +59,7 @@ class ConsumoView(TemplateView):
             data_inicio += timedelta(days=1)
 
         return render(request, self.template_name, dict(
+            sensor=self.sensores,
             periodo=periodo,
             consumos=self.consumos
         ))

@@ -14,6 +14,14 @@
             <tbody class="text-center">
               <tr>
                 <td>
+                  <label for="">Sensor</label>
+                <select class="form-select" name="" id="">
+                  {% for sensor in sensor %}
+                    <option value=sensor >{{sensor}}</option>
+                  {% endfor %}
+                </select>
+                </td>
+                <td>
                   <label for="nome">inicial</label>
                   <input class="form-control" type="date" name="data1" placeholder="dd/mm/yyyy" value= "{{request.GET.data1}}">
                 </td>
