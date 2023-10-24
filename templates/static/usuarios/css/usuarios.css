@@ -6,7 +6,7 @@
 
 .bg-img{
     background-size: cover;
-    height: 100vh;
+    height: 604px;
     color: #14e9e9;
     background-image: linear-gradient(to right, rgba(255,0,0,0), var(--blue-color));
 }
@@ -20,13 +20,14 @@
 
 .box-form{
     color: white;
-    width: 70%;
+    width: 350px;
     background-color: var(--main-color);
     margin: auto;
     padding: 40px;
     margin-top: 4%;
     border-radius: 20px;
     box-shadow: 1px 1px 5px 1px #0e0e0e;
+    position: absolute;
 }
 
 .link{

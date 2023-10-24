@@ -16,7 +16,7 @@ class ConsumoAgua(models.Model):
         null=True
     )
     data_consumo = models.DateField(
-        auto_now_add=True,
+        #auto_now_add=True,
         null=True
     )
 

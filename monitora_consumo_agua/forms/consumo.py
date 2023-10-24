@@ -7,5 +7,5 @@ class ConsumoAguaForm(forms.ModelForm):
     class Meta:
         model = ConsumoAgua
         fields = (
-            'sensor', 'consumo',
+            'sensor', 'consumo', 'data_consumo',
         )
